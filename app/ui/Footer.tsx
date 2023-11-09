@@ -6,9 +6,12 @@ const Footer = () => {
                 alt="logo"
                 className="w-36"
             />
-            <p className="text-sm font-semibold mt-4 text-[#575C5F]">
-                Made by{' '}
-                <span className="text-base font-bold">Ashutosh Ojha</span>
+
+            <p className="text-sm font-bold mt-4 text-[#575C5F]">
+                Made by{'  '}
+                <span className="footer-name text-xl font-normal">
+                    Ashutosh Ojha
+                </span>
             </p>
         </header>
     )
