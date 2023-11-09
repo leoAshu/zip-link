@@ -1,13 +1,18 @@
 const Content = () => {
     return (
-        <section className="py-96 flex items-center justify-center">
-            <div className="flex rounded-lg border overflow-hidden">
+        <section className="py-36 flex items-center justify-center">
+            <div className="flex rounded-lg border border-[#575C5F] shadow-xl overflow-hidden">
+                <div className="p-2 w-10 bg-[#575C5F] flex justify-center items-center">
+                    <img src="/icons/url.png" alt="url" className="h-6 w-6" />
+                </div>
+
                 <input
                     type="text"
                     placeholder="Enter your URL"
-                    className="w-96 p-2 pl-4 outline-none"
+                    className="w-96 pl-4 outline-none"
                 />
-                <button className="w-24 p-2 font-semibold bg-[#b4bfc5]/50 hover:bg-[#b4bfc5] transition-all duration-500">
+
+                <button className="w-24 text-[#DEDAD7] text-lg font-semibold bg-[#575C5F]/50 hover:bg-[#575C5F] transition-all duration-300">
                     Zip It
                 </button>
             </div>
