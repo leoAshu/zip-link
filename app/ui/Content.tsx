@@ -1,13 +1,13 @@
 const Content = () => {
     return (
         <section className="py-96 flex items-center justify-center">
-            <div className="flex">
+            <div className="flex rounded-lg border overflow-hidden">
                 <input
                     type="text"
                     placeholder="Enter your URL"
-                    className="w-96 p-2 pl-4 mr-2 rounded-md border border-none outline-none placeholder:font-semibold"
+                    className="w-96 p-2 pl-4 outline-none"
                 />
-                <button className="w-24 p-2 font-semibold rounded-md bg-[#b4bfc5] border border-[#b4bfc5] hover:bg-white">
+                <button className="w-24 p-2 font-semibold bg-[#b4bfc5]/50 hover:bg-[#b4bfc5] transition-all duration-500">
                     Zip It
                 </button>
             </div>
