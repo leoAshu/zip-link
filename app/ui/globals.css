@@ -15,3 +15,13 @@
         --background-end-rgb: 0, 0, 0;
     }
 }
+
+@font-face {
+    font-family: 'lilita';
+    src: url('/fonts/Lilita One Regular.ttf');
+}
+
+body {
+    background-color: #dedad7;
+    color: #575c5f;
+}
