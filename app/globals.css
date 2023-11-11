@@ -21,11 +21,6 @@
     src: url('/fonts/Lilita One Regular.ttf');
 }
 
-body {
-    background-color: #dedad7;
-    color: #575c5f;
-}
-
 .footer-name {
     font-family: 'lilita';
 }

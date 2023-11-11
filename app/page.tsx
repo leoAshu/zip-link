@@ -1,10 +1,10 @@
-import Content from './ui/Content'
-import Header from './ui/Header'
-import Footer from './ui/Footer'
+import Content from './components/Content'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 export default function Home() {
     return (
-        <div className="app">
+        <div className="flex flex-col min-h-screen">
             <Header />
             <Content />
             <Footer />
