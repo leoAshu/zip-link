@@ -116,68 +116,6 @@ const Content = () => {
                 </div>
             </div>
         </section>
-
-        // <section className="flex flex-1 flex-col items-center justify-start">
-        //     <div className="p-16 flex flex-col justify-center items-start">
-        //         <h2 className="text-3xl md:text-5xl font-[#575C5F]">
-        //             Shorten your Loooooong Links
-        //         </h2>
-
-        //         <p className="mt-4 max-w-sm text-sm md:text-base md:max-w-lg">
-        //             Elevate your sharing game, transforming lengthy URLs into
-        //             sleek links for effortless and stylish communication!
-        //         </p>
-        //     </div>
-
-        //     <div className="flex flex-col justify-center items-center">
-        //         <div className="flex rounded-lg border border-[#575C5F] shadow-md overflow-hidden">
-        //             <div className="p-2 bg-[#575C5F] flex justify-center items-center">
-        //                 <img
-        //                     src="/icons/url.png"
-        //                     alt="url"
-        //                     className="h-6 w-6"
-        //                 />
-        //             </div>
-
-        //             <input
-        //                 type="text"
-        //                 placeholder="Enter your URL"
-        //                 className="w-96 pl-4 outline-none"
-        //             />
-
-        //             <button className="w-24 text-white text-lg font-semibold bg-[#575C5F]/50 hover:bg-[#575C5F] transition-all duration-300">
-        //                 Zip It
-        //             </button>
-        //         </div>
-
-        //         <div className="shadow-md rounded-md overflow-hidden">
-        //             <table>
-        //                 <thead>
-        //                     <tr className="text-left bg-[#575C5F] text-[#DEDAD7]">
-        //                         <th className="p-2 pl-6">Short Link</th>
-        //                         <th className="p-2 pl-6">Original Link</th>
-        //                         <th className="p-2 pl-6">Date</th>
-        //                     </tr>
-        //                 </thead>
-        //                 <tbody>
-        //                     {urls.map((item) => (
-        //                         <tr className="text-xs lg:text-sm font-semibold text-[#575C5F] bg-transparent border-t border-t-[#575C5F]">
-        //                             <td className="p-2 py-3 pl-6">
-        //                                 {item.shortUrl}
-        //                             </td>
-        //                             <td className="p-2 py-3 pl-6">
-        //                                 {item.originalUrl}
-        //                             </td>
-        //                             <td className="p-2 py-3 pl-6">
-        //                                 {item.createdAt}
-        //                             </td>
-        //                         </tr>
-        //                     ))}
-        //                 </tbody>
-        //             </table>
-        //         </div>
-        //     </div>
-        // </section>
     )
 }
 

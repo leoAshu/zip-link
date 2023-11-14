@@ -24,3 +24,21 @@
 .footer-name {
     font-family: 'lilita';
 }
+
+.shadow-neo {
+    box-shadow:
+        20px 20px 60px #bec7d4,
+        -20px -20px 60px #ffffff;
+}
+
+.shadow-clay {
+    box-shadow:
+        20px 20px 40px #d1bea9,
+        -20px -20px 40px #fff6eb;
+}
+
+.shadow-glass {
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.1),
+        0 1px 3px rgba(0, 0, 0, 0.1);
+}
