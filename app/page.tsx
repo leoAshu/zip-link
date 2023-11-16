@@ -1,6 +1,6 @@
-import Content from './components/Content'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import Content from './ui-components/Content'
+import Header from './ui-components/Header'
+import Footer from './ui-components/Footer'
 
 export default function Home() {
     return (
