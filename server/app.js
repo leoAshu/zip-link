@@ -2,7 +2,7 @@ import express from 'express'
 import * as dotenv from 'dotenv'
 import mongoose from 'mongoose'
 
-import defaultRoute from './routes/index.js'
+import defaultRoute, {zipItRoute} from './routes/index.js'
 import connectDB from './mongodb/connect.js'
 
 dotenv.config()
@@ -11,6 +11,7 @@ const PORT = 3000
 const app = express()
 
 app.use('/', defaultRoute)
+app.use('/zipIt', zipItRoute)
 
 const startServer = async () => {
     try {
