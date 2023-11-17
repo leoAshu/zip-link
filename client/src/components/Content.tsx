@@ -98,7 +98,7 @@ const Content = () => {
                         value={urlInput}
                         onChange={(e) => setUrlInput(e.target.value)}
                         required
-                        className="w-96 pl-4 outline-none bg-white rounded-md p-2 caret-transparent"
+                        className="w-96 pl-4 outline-none bg-white rounded-md p-2 caret-transparent text-[#2980b9]"
                     />
 
                     <button
