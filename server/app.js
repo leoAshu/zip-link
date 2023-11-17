@@ -1,6 +1,5 @@
 import express from 'express'
 import * as dotenv from 'dotenv'
-import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 
 import zipRoute from './routes/zipRoute.js'
@@ -9,22 +8,24 @@ import ZipLinkModel from './mongodb/models/zipLinks.js'
 
 dotenv.config()
 
-const PORT = 3000
+const PORT = process.env.PORT
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
 
+// Route to shorten a URL
 app.use('/zip', zipRoute)
 
+// Route to ping server to check status
 app.get('/', (req, res) => {
     res.status(200).json({ status: 'ZipLink is live!' })
 })
 
+// Route to redirect to the original URL
 app.get('/:zipId', async (req, res) => {
     const zipId = req.params.zipId
 
     const zipLink = await ZipLinkModel.findOne({ zipId: zipId })
     if (!zipLink) {
-        console.log('ZipId does not exist.')
         res.status(404).json({ error: 'ZipLink not found.' })
         return
     }
@@ -40,5 +41,4 @@ const startServer = async () => {
         console.log(err)
     }
 }
-
 startServer()
