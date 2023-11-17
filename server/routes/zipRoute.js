@@ -14,14 +14,15 @@ const router = express.Router()
 router.route('/').post(async (req, res) => {
     let url = req.body.url
 
+    // Append protocol if not provided in the url
     if (
         !(String(url).includes('https://') || String(url).includes('http://'))
     ) {
         url = 'https://' + url
     }
 
+    // Check if url is passed as param
     if (!url) {
-        // Check if url is passed as param
         res.status(400).json({ error: 'URL is required' })
         return
     }
