@@ -1,6 +1,7 @@
 import express from 'express'
 import * as dotenv from 'dotenv'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 
 import zipRoute from './routes/zipRoute.js'
 import connectDB from './mongodb/connect.js'
@@ -10,6 +11,7 @@ dotenv.config()
 
 const PORT = process.env.PORT
 const app = express()
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // Route to shorten a URL
