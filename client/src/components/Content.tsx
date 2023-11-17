@@ -57,6 +57,8 @@ const Content = () => {
                 if (response.status === 200) {
                     const result = await response.data
                     setZipLinks(result.data.reverse())
+                } else {
+                    alert('Failed to shorten the URL. Please try again.')
                 }
             } catch (err) {
                 alert(err)
