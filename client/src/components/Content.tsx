@@ -36,6 +36,8 @@ const Content = () => {
                 if (!linkAlreadyExists) {
                     setZipLinks([newZipLink, ...zipLinks])
                 }
+            } else {
+                alert('Failed to shorten the URL. Please try again.')
             }
         } catch (err) {
             alert(err)
@@ -95,7 +97,8 @@ const Content = () => {
                         placeholder="Enter your URL"
                         value={urlInput}
                         onChange={(e) => setUrlInput(e.target.value)}
-                        className="w-96 pl-4 outline-none bg-white rounded-md p-2"
+                        required
+                        className="w-96 pl-4 outline-none bg-white rounded-md p-2 caret-transparent"
                     />
 
                     <button
