@@ -1,16 +1,27 @@
+import { useState, useEffect } from 'react'
+
 const Content = () => {
-    const urls = [
-        {
-            originalUrl: 'https://example.com/page1',
-            shortUrl: 'https://zip.link/abc123',
-            createdAt: '2023-11-09T12:30:00Z',
-        },
-        {
-            originalUrl: 'https://example.com/page6',
-            shortUrl: 'https://zip.link/pqr678',
-            createdAt: '2023-11-09T19:10:00Z',
-        },
-    ]
+    const [zipLinks, setZipLinks] = useState([])
+
+    useEffect(() => {
+        const fetchZipLinks = async () => {
+            try {
+                const response = await fetch('http://localhost:3000/zip', {
+                    method: 'GET',
+                })
+
+                if (response.ok) {
+                    const result = await response.json()
+                    setZipLinks(result.data.reverse())
+                }
+            } catch (error) {
+                alert(error)
+                console.error(error)
+            }
+        }
+
+        fetchZipLinks()
+    }, [])
 
     return (
         <section className="flex flex-1 flex-col items-center justify-start bg-[#3498db] py-24">
@@ -45,39 +56,48 @@ const Content = () => {
                     </button>
                 </div>
 
-                <div className="shadow-md rounded-md overflow-clip w-full max-w-3xl transition-transform transform hover:scale-105">
-                    <table className="w-full bg-white">
-                        <thead className="bg-[#3498db] text-white text-left">
-                            <tr>
-                                <th className="p-3 pl-6">Short Link</th>
-                                <th className="p-3 pl-6">Original Link</th>
-                                <th className="p-3 pl-6">Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {urls.map((item, index) => (
-                                <tr
-                                    key={index}
-                                    className={`text-sm font-semibold text-[#3498db] ${
-                                        index % 2 === 0
-                                            ? 'bg-white'
-                                            : 'bg-[#f2f2f2]'
-                                    } border-t border-t-[#f2f2f2] transition-all duration-300`}
-                                >
-                                    <td className="p-4 pl-6">
-                                        {item.shortUrl}
-                                    </td>
-                                    <td className="p-4 pl-6">
-                                        {item.originalUrl}
-                                    </td>
-                                    <td className="p-4 pl-6">
-                                        {item.createdAt}
-                                    </td>
+                {Boolean(zipLinks.length) && (
+                    <div className="shadow-md rounded-md overflow-clip w-full max-w-3xl transition-transform transform hover:scale-105">
+                        <table className="w-full bg-white">
+                            <thead className="bg-[#3498db] text-white text-left">
+                                <tr>
+                                    <th className="p-3 pl-6">Short Link</th>
+                                    <th className="p-3 pl-6">Original Link</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                                {zipLinks.map(
+                                    (
+                                        item: {
+                                            zipId: string
+                                            redirectUrl: string
+                                        },
+                                        index
+                                    ) => (
+                                        <tr
+                                            key={index}
+                                            className={`text-sm font-semibold text-[#3498db] ${
+                                                index % 2 === 0
+                                                    ? 'bg-white'
+                                                    : 'bg-[#f2f2f2]'
+                                            } border-t border-t-[#f2f2f2] transition-all duration-300`}
+                                        >
+                                            <td className="p-4 pl-6">
+                                                {`${
+                                                    import.meta.env
+                                                        .VITE_APP_API_BASE_URL
+                                                }/${item.zipId}`}
+                                            </td>
+                                            <td className="p-4 pl-6">
+                                                {item.redirectUrl}
+                                            </td>
+                                        </tr>
+                                    )
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
             </div>
         </section>
     )
