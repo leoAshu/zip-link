@@ -29,10 +29,7 @@ app.get('/:zipId', async (req, res) => {
         return
     }
 
-    const redirectUrl = zipLink.redirectUrl
-    console.log(redirectUrl)
-    res.redirect(redirectUrl)
-    return
+    res.redirect(zipLink.redirectUrl)
 })
 
 const startServer = async () => {

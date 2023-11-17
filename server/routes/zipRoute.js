@@ -12,25 +12,31 @@ const nanoid = customAlphabet(
 const router = express.Router()
 
 router.route('/').post(async (req, res) => {
-    const url = req.body.url
+    let url = req.body.url
+
+    if (
+        !(String(url).includes('https://') || String(url).includes('http://'))
+    ) {
+        url = 'https://' + url
+    }
 
     if (!url) {
-        console.log('URL is required')
+        // Check if url is passed as param
         res.status(400).json({ error: 'URL is required' })
         return
     }
 
+    // Check if url already exists in DB
     const urlExists = await ZipLinkModel.find({ redirectUrl: url })
     if (urlExists.length) {
-        console.log('URL exists')
         res.status(200).json({ zipId: urlExists[0].zipId })
         return
     }
 
+    // Avoiding possible collision
     let zipId = nanoid()
     let zipIdExists = ZipLinkModel.find({ zipId: zipId })
     while (zipIdExists.length) {
-        console.log('ZipId exists')
         zipId = nanoid()
         zipIdExists = ZipLinkModel.find({ zipId: zipId })
     }
@@ -39,10 +45,8 @@ router.route('/').post(async (req, res) => {
         zipId: zipId,
         redirectUrl: url,
     })
-
     await zipLink.save()
 
-    console.log('New ZipLink saved')
     res.status(200).json({ zipId: zipId })
 })
 
