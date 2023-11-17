@@ -11,6 +11,11 @@ const nanoid = customAlphabet(
 )
 const router = express.Router()
 
+router.route('/').get(async (req, res) => {
+    const zipLinks = await ZipLinkModel.find({})
+    res.status(200).json({ data: zipLinks })
+})
+
 router.route('/').post(async (req, res) => {
     let url = req.body.url
 
