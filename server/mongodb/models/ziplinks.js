@@ -1,10 +1,10 @@
 import mongoose from 'mongoose'
 
-const ZipLink = new mongoose.Schema({
+const ZipLinkSchema = new mongoose.Schema({
     zipId: { type: String, required: true, unique: true },
     redirectUrl: { type: String, required: true },
-});
+})
 
-const ZipLinkSchema = mongoose.model('ZipLink', ZipLink);
+const ZipLinkModel = mongoose.model('ZipLink', ZipLinkSchema)
 
-export default ZipLinkSchema;
+export default ZipLinkModel
