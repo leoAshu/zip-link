@@ -1,5 +1,13 @@
+import { Content, Footer, Header } from './components'
+
 const App = () => {
-    return <div className="text-3xl text-red-500">App</div>
+    return (
+        <div className="flex flex-col min-h-screen">
+            <Header />
+            <Content />
+            <Footer />
+        </div>
+    )
 }
 
 export default App
