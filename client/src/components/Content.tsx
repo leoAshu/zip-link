@@ -109,7 +109,7 @@ const Content = () => {
                 {Boolean(zipLinks.length) && (
                     <div className="shadow-md rounded-md overflow-clip w-full max-w-3xl transition-transform transform hover:scale-105">
                         <table className="w-full bg-white">
-                            <thead className="bg-[#3498db] text-white text-left">
+                            <thead className="bg-[#2980b9] text-white text-left">
                                 <tr>
                                     <th className="p-3 pl-6">Short Link</th>
                                     <th className="p-3 pl-6">Original Link</th>
@@ -119,7 +119,7 @@ const Content = () => {
                                 {zipLinks.map((item, index) => (
                                     <tr
                                         key={index}
-                                        className={`text-sm font-semibold text-[#3498db] ${
+                                        className={`text-sm font-semibold text-[#2980b9] ${
                                             index % 2 === 0
                                                 ? 'bg-white'
                                                 : 'bg-[#f2f2f2]'
