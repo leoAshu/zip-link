@@ -1,22 +1,64 @@
 import { useState, useEffect } from 'react'
+import axios from 'axios'
+import ZipLink from '../models'
 
 const Content = () => {
-    const [zipLinks, setZipLinks] = useState([])
+    const [urlInput, setUrlInput] = useState('')
+    const [zipLinks, setZipLinks] = useState([] as ZipLink[])
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+
+        try {
+            const response = await axios.post(
+                `${import.meta.env.VITE_APP_API_BASE_URL}/zip`,
+                {
+                    url: urlInput,
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                }
+            )
+            if (response.status === 200) {
+                const result = await response.data
+                const newZipLink = {
+                    zipId: result.zipId,
+                    redirectUrl: urlInput,
+                }
+
+                // Check if the link is already in zipLinks
+                const linkAlreadyExists = zipLinks.some(
+                    (link) => link.zipId === result.zipId
+                )
+
+                if (!linkAlreadyExists) {
+                    setZipLinks([newZipLink, ...zipLinks])
+                }
+            }
+        } catch (err) {
+            alert(err)
+            console.error(err)
+        } finally {
+            setUrlInput('')
+        }
+    }
 
     useEffect(() => {
         const fetchZipLinks = async () => {
             try {
-                const response = await fetch('http://localhost:3000/zip', {
-                    method: 'GET',
-                })
+                const response = await axios.get(
+                    `${import.meta.env.VITE_APP_API_BASE_URL}/zip`
+                )
 
-                if (response.ok) {
-                    const result = await response.json()
+                if (response.status === 200) {
+                    const result = await response.data
                     setZipLinks(result.data.reverse())
                 }
-            } catch (error) {
-                alert(error)
-                console.error(error)
+            } catch (err) {
+                alert(err)
+                console.error(err)
             }
         }
 
@@ -36,7 +78,10 @@ const Content = () => {
             </div>
 
             <div className="flex flex-col justify-center items-center">
-                <div className="flex rounded-lg bg-white p-6 shadow-md overflow-hidden mb-20 transition-transform transform hover:scale-105">
+                <form
+                    onSubmit={handleSubmit}
+                    className="flex rounded-lg bg-white p-2 shadow-md overflow-hidden mb-20 transition-transform transform hover:scale-105"
+                >
                     <div className="p-2 flex justify-center items-center rounded-md">
                         <img
                             src="src/assets/link.png"
@@ -46,15 +91,20 @@ const Content = () => {
                     </div>
 
                     <input
-                        type="text"
+                        type="url"
                         placeholder="Enter your URL"
+                        value={urlInput}
+                        onChange={(e) => setUrlInput(e.target.value)}
                         className="w-96 pl-4 outline-none bg-white rounded-md p-2"
                     />
 
-                    <button className="w-24 text-white text-lg font-semibold bg-[#3498db] hover:bg-[#2980b9] transition-all duration-300 rounded-md">
+                    <button
+                        type="submit"
+                        className="w-24 text-white text-lg font-semibold bg-[#3498db] hover:bg-[#2980b9] transition-all duration-300 rounded-md"
+                    >
                         Zip It
                     </button>
-                </div>
+                </form>
 
                 {Boolean(zipLinks.length) && (
                     <div className="shadow-md rounded-md overflow-clip w-full max-w-3xl transition-transform transform hover:scale-105">
@@ -66,34 +116,26 @@ const Content = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {zipLinks.map(
-                                    (
-                                        item: {
-                                            zipId: string
-                                            redirectUrl: string
-                                        },
-                                        index
-                                    ) => (
-                                        <tr
-                                            key={index}
-                                            className={`text-sm font-semibold text-[#3498db] ${
-                                                index % 2 === 0
-                                                    ? 'bg-white'
-                                                    : 'bg-[#f2f2f2]'
-                                            } border-t border-t-[#f2f2f2] transition-all duration-300`}
-                                        >
-                                            <td className="p-4 pl-6">
-                                                {`${
-                                                    import.meta.env
-                                                        .VITE_APP_API_BASE_URL
-                                                }/${item.zipId}`}
-                                            </td>
-                                            <td className="p-4 pl-6">
-                                                {item.redirectUrl}
-                                            </td>
-                                        </tr>
-                                    )
-                                )}
+                                {zipLinks.map((item, index) => (
+                                    <tr
+                                        key={index}
+                                        className={`text-sm font-semibold text-[#3498db] ${
+                                            index % 2 === 0
+                                                ? 'bg-white'
+                                                : 'bg-[#f2f2f2]'
+                                        } border-t border-t-[#f2f2f2] transition-all duration-300`}
+                                    >
+                                        <td className="p-4 pl-6">
+                                            {`${
+                                                import.meta.env
+                                                    .VITE_APP_API_BASE_URL
+                                            }/${item.zipId}`}
+                                        </td>
+                                        <td className="p-4 pl-6">
+                                            {item.redirectUrl}
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
                     </div>
