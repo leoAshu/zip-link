@@ -17,14 +17,7 @@ router.route('/').get(async (req, res) => {
 })
 
 router.route('/').post(async (req, res) => {
-    let url = req.body.url
-
-    // Append protocol if not provided in the url
-    if (
-        !(String(url).includes('https://') || String(url).includes('http://'))
-    ) {
-        url = 'https://' + url
-    }
+    const { url } = req.body
 
     // Check if url is passed as param
     if (!url) {
@@ -53,7 +46,7 @@ router.route('/').post(async (req, res) => {
     })
     await zipLink.save()
 
-    res.status(200).json({ zipId: zipId })
+    res.status(200).json({ zipId: zipLink.zipId })
 })
 
 export default router
