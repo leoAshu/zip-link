@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import ZipLink from '../models'
+import linkIcon from '../assets/link.png'
 
 const Content = () => {
     const [urlInput, setUrlInput] = useState('')
@@ -88,7 +89,7 @@ const Content = () => {
                 >
                     <div className="p-2 flex justify-center items-center rounded-md">
                         <img
-                            src="src/assets/link.png"
+                            src={linkIcon}
                             alt="url"
                             className="h-6 w-6 text-white"
                         />
