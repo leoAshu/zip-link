@@ -5,8 +5,7 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "start": "nodemon",
-        "format": "npx prettier --write ."
+        "start": "nodemon"
     },
     "author": "",
     "license": "ISC",

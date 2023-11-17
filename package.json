@@ -1,0 +1,14 @@
+{
+    "name": "zip-link",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "format": "npx prettier --write ."
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "prettier": "^3.1.0"
+    }
+}
