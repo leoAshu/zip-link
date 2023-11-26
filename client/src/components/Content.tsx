@@ -72,28 +72,23 @@ const Content = () => {
 
     return (
         <main className="flex-1 flex flex-col items-center justify-center bg-[#3498db] text-white">
-            <div className="flex flex-col items-center mt-4 mb-20 max-w-fit sm:max-w-xl lg:max-w-3xl text-center">
-                <h2 className="text-3xl md:text-5xl font-bold">
-                    Shorten your Long Links
-                </h2>
-                <p className="mt-4 text-sm md:text-base max-w-xs md:max-w-md lg:max-w-xl text-center">
-                    Elevate your sharing game, transforming lengthy URLs into
-                    sleek links for effortless and stylish communication!
-                </p>
-            </div>
+            <div>
+                <div className="flex flex-col items-center mt-4 mb-20">
+                    <h2 className="text-3xl md:text-5xl font-bold">
+                        Shorten your Long Links
+                    </h2>
+                    <p className="mt-4 text-sm md:text-base max-w-xs md:max-w-md lg:max-w-xl text-center">
+                        Elevate your sharing game, transforming lengthy URLs
+                        into sleek links for effortless and stylish
+                        communication!
+                    </p>
+                </div>
 
-            <div className="flex flex-col justify-center items-center">
-                <form
-                    onSubmit={handleSubmit}
-                    className="flex rounded-lg bg-white p-2 shadow-md overflow-hidden mb-20 transition-transform transform hover:scale-105"
+                <div
+                    role="form-area"
+                    className="flex justify-center items-center bg-white rounded-lg p-2"
                 >
-                    <div className="p-2 flex justify-center items-center rounded-md">
-                        <img
-                            src={linkIcon}
-                            alt="url"
-                            className="h-6 w-6 text-white"
-                        />
-                    </div>
+                    <img src={linkIcon} alt="url" className="w-6 rounded-lg" />
 
                     <input
                         type="url"
@@ -101,18 +96,19 @@ const Content = () => {
                         value={urlInput}
                         onChange={(e) => setUrlInput(e.target.value)}
                         required
-                        className="w-96 pl-4 outline-none bg-white rounded-md p-2 caret-transparent text-[#2980b9]"
+                        className="flex-1 outline-none rounded-md p-2 caret-transparent text-[#2980b9]"
                     />
 
                     <button
                         type="submit"
-                        className="w-24 text-white text-lg font-semibold bg-[#3498db] hover:bg-[#2980b9] transition-all duration-300 rounded-md"
+                        className="p-2 px-4 text-white text-lg font-semibold bg-[#3498db] hover:bg-[#2980b9] transition-all duration-300 rounded-md"
+                        onClick={handleSubmit}
                     >
                         Zip It
                     </button>
-                </form>
+                </div>
 
-                {Boolean(zipLinks.length) && (
+                {/* {Boolean(zipLinks.length) && (
                     <div className="shadow-md rounded-md overflow-clip w-full max-w-3xl transition-transform transform hover:scale-105">
                         <table className="w-full bg-white">
                             <thead className="bg-[#2980b9] text-white text-left">
@@ -145,7 +141,7 @@ const Content = () => {
                             </tbody>
                         </table>
                     </div>
-                )}
+                )} */}
             </div>
         </main>
     )
