@@ -71,12 +71,12 @@ const Content = () => {
     }, [])
 
     return (
-        <section className="flex flex-1 flex-col items-center justify-start bg-[#3498db] py-24">
-            <div className="mt-4 mb-20 text-center">
-                <h2 className="text-3xl md:text-5xl font-bold text-white">
+        <main className="flex-1 flex flex-col items-center justify-center bg-[#3498db] text-white">
+            <div className="flex flex-col items-center mt-4 mb-20 max-w-fit sm:max-w-xl lg:max-w-3xl text-center">
+                <h2 className="text-3xl md:text-5xl font-bold">
                     Shorten your Long Links
                 </h2>
-                <p className="mt-4 max-w-md text-sm md:text-base md:max-w-lg text-white">
+                <p className="mt-4 text-sm md:text-base max-w-xs md:max-w-md lg:max-w-xl text-center">
                     Elevate your sharing game, transforming lengthy URLs into
                     sleek links for effortless and stylish communication!
                 </p>
@@ -147,7 +147,7 @@ const Content = () => {
                     </div>
                 )}
             </div>
-        </section>
+        </main>
     )
 }
 
