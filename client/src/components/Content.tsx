@@ -108,13 +108,13 @@ const Content = () => {
                     </button>
                 </div>
 
-                {/* {Boolean(zipLinks.length) && (
-                    <div className="shadow-md rounded-md overflow-clip w-full max-w-3xl transition-transform transform hover:scale-105">
-                        <table className="w-full bg-white">
+                {Boolean(zipLinks.length) && (
+                    <div className="w-0 sm:w-fit mt-4 shadow-md rounded-md overflow-clip transition-transform transform hover:scale-105">
+                        <table className="bg-white">
                             <thead className="bg-[#2980b9] text-white text-left">
                                 <tr>
-                                    <th className="p-3 pl-6">Short Link</th>
-                                    <th className="p-3 pl-6">Original Link</th>
+                                    <th className="p-4">Short Link</th>
+                                    <th className="p-4 pl-6">Original Link</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -127,7 +127,7 @@ const Content = () => {
                                                 : 'bg-[#f2f2f2]'
                                         } border-t border-t-[#f2f2f2] transition-all duration-300`}
                                     >
-                                        <td className="p-4 pl-6">
+                                        <td className="p-4">
                                             {`${
                                                 import.meta.env
                                                     .VITE_APP_API_BASE_URL
@@ -141,7 +141,7 @@ const Content = () => {
                             </tbody>
                         </table>
                     </div>
-                )} */}
+                )}
             </div>
         </main>
     )
