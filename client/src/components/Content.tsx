@@ -111,7 +111,7 @@ const Content = () => {
                 </div>
 
                 {Boolean(zipLinks.length) && (
-                    <div className="w-0 sm:w-full mt-4 shadow-md rounded-md overflow-clip transition-transform transform hover:scale-105">
+                    <div className="hidden sm:block sm:w-full mt-4 shadow-md rounded-md overflow-clip transition-transform transform hover:scale-105">
                         <table className="w-full bg-white">
                             <thead className="bg-[#2980b9] text-white text-left">
                                 <tr>
