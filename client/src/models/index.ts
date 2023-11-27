@@ -1,6 +1,6 @@
 interface ZipLink {
-    zipId: String
-    redirectUrl: String
+    zipId: string
+    redirectUrl: string
 }
 
 export default ZipLink
