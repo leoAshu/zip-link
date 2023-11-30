@@ -2,11 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import ZipLink from '../models'
 import linkIcon from '../assets/link.png'
-
-const removeHttps = (url: string): string => {
-    // Using a regular expression to remove 'https://'
-    return url.replace(/^https?:\/\//, '')
-}
+import { removeHttps } from '../utils'
 
 const Content = () => {
     const [urlInput, setUrlInput] = useState('')
