@@ -41,6 +41,11 @@ const Content = () => {
                 if (!linkAlreadyExists) {
                     setZipLinks([newZipLink, ...zipLinks])
                 }
+                alert(
+                    `Here\'s your shortened link:\n${removeHttps(
+                        import.meta.env.VITE_APP_API_BASE_URL
+                    )}/${newZipLink.zipId}`
+                )
             } else {
                 alert('Failed to shorten the URL. Please try again.')
             }
@@ -77,9 +82,9 @@ const Content = () => {
     }, [])
 
     return (
-        <main className="flex-1 flex flex-col items-center justify-center bg-[#3498db] text-white">
+        <main className="flex-1 flex flex-col items-center justify-start bg-[#3498db] text-white">
             <div>
-                <div className="flex flex-col items-center mt-4 mb-10">
+                <div className="flex flex-col items-center mt-36 mb-10">
                     <h2 className="text-3xl md:text-5xl font-bold">
                         Shorten your Long Links
                     </h2>
@@ -110,7 +115,7 @@ const Content = () => {
                     </div>
                 ) : (
                     <>
-                        <div className="flex justify-center items-center bg-white rounded-lg p-2">
+                        <div className="flex justify-center items-center bg-white rounded-lg p-1.5">
                             <img
                                 src={linkIcon}
                                 alt="url"
@@ -136,7 +141,7 @@ const Content = () => {
                         </div>
 
                         {Boolean(zipLinks.length) && (
-                            <div className="hidden sm:block sm:w-full mt-4 shadow-md rounded-md overflow-clip transition-transform transform hover:scale-105">
+                            <div className="hidden sm:block sm:w-full mt-10 shadow-md rounded-md overflow-clip transition-transform transform hover:scale-105">
                                 <table className="w-full bg-white">
                                     <thead className="bg-[#2980b9] text-white text-left">
                                         <tr>
