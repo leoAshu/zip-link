@@ -4,7 +4,7 @@ import { Oval } from 'react-loader-spinner'
 
 import ZipLink from '../models'
 import linkIcon from '../assets/link.png'
-import { removeHttps } from '../utils'
+import { cleanURL } from '../utils'
 
 const Content = () => {
     const [urlInput, setUrlInput] = useState('')
@@ -42,7 +42,7 @@ const Content = () => {
                     setZipLinks([newZipLink, ...zipLinks])
                 }
                 alert(
-                    `Here\'s your shortened link:\n${removeHttps(
+                    `Here\'s your shortened link:\n${cleanURL(
                         import.meta.env.VITE_APP_API_BASE_URL
                     )}/${newZipLink.zipId}`
                 )
@@ -162,15 +162,13 @@ const Content = () => {
                                                 } border-t border-t-[#f2f2f2] transition-all duration-300`}
                                             >
                                                 <td className="p-4">
-                                                    {`${removeHttps(
+                                                    {`${cleanURL(
                                                         import.meta.env
                                                             .VITE_APP_API_BASE_URL
                                                     )}/${item.zipId}`}
                                                 </td>
                                                 <td className="p-4 pl-6">
-                                                    {removeHttps(
-                                                        item.redirectUrl
-                                                    )}
+                                                    {cleanURL(item.redirectUrl)}
                                                 </td>
                                             </tr>
                                         ))}

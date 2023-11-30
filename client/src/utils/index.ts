@@ -1,5 +1,5 @@
-const removeHttps = (url: string): string => {
+const cleanURL = (url: string): string => {
     return url.replace(/^https?:\/\//, '').replace(/^www\./, '')
 }
 
-export { removeHttps }
+export { cleanURL }
