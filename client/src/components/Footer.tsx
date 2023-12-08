@@ -2,7 +2,7 @@ import logo from '../assets/logo-no-background-dark.png'
 
 const Footer = () => {
     return (
-        <footer className="py-4 bg-[#2980b9] flex flex-col items-center justify-center">
+        <footer>
             <img src={logo} alt="logo" className="w-24 sm:w-36" />
 
             <p className="text-xs sm:text-sm font-normal mt-2 text-white">

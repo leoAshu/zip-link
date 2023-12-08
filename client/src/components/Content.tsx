@@ -82,9 +82,9 @@ const Content = () => {
     }, [])
 
     return (
-        <main className="flex-1 flex flex-col items-center justify-start bg-[#3498db] text-white">
+        <main>
             <div>
-                <div className="flex flex-col items-center mt-36 mb-10">
+                <div>
                     <h2 className="text-3xl md:text-5xl font-bold">
                         Shorten your Long Links
                     </h2>
@@ -96,7 +96,7 @@ const Content = () => {
                 </div>
 
                 {isLoading ? (
-                    <div className="flex flex-col justify-center items-center">
+                    <div>
                         <Oval
                             height={60}
                             width={60}
@@ -115,7 +115,7 @@ const Content = () => {
                     </div>
                 ) : (
                     <>
-                        <div className="flex justify-center items-center bg-white rounded-lg p-1.5">
+                        <div>
                             <img
                                 src={linkIcon}
                                 alt="url"
@@ -128,54 +128,12 @@ const Content = () => {
                                 value={urlInput}
                                 onChange={(e) => setUrlInput(e.target.value)}
                                 required
-                                className="flex-1 outline-none rounded-md p-2 caret-transparent text-[#2980b9]"
                             />
 
-                            <button
-                                type="submit"
-                                className="p-2 px-4 text-white text-lg font-semibold bg-[#3498db] hover:bg-[#2980b9] transition-all duration-300 rounded-md"
-                                onClick={handleSubmit}
-                            >
+                            <button type="submit" onClick={handleSubmit}>
                                 Zip It
                             </button>
                         </div>
-
-                        {Boolean(zipLinks.length) && (
-                            <div className="hidden sm:block sm:w-full mt-10 shadow-md rounded-md overflow-clip transition-transform transform hover:scale-105">
-                                <table className="w-full bg-white">
-                                    <thead className="bg-[#2980b9] text-white text-left">
-                                        <tr>
-                                            <th className="p-4">Short Link</th>
-                                            <th className="p-4 pl-6">
-                                                Original Link
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {zipLinks.map((item, index) => (
-                                            <tr
-                                                key={index}
-                                                className={`text-sm font-semibold text-[#2980b9] ${
-                                                    index % 2 === 0
-                                                        ? 'bg-white'
-                                                        : 'bg-[#f2f2f2]'
-                                                } border-t border-t-[#f2f2f2] transition-all duration-300`}
-                                            >
-                                                <td className="p-4">
-                                                    {`${cleanURL(
-                                                        import.meta.env
-                                                            .VITE_APP_API_BASE_URL
-                                                    )}/${item.zipId}`}
-                                                </td>
-                                                <td className="p-4 pl-6">
-                                                    {cleanURL(item.redirectUrl)}
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        )}
                     </>
                 )}
             </div>

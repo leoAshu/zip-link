@@ -2,7 +2,7 @@ import { Content, Footer, Header } from './components'
 
 const App = () => {
     return (
-        <div className="flex flex-col min-h-screen">
+        <div>
             <Header />
             <Content />
             <Footer />
